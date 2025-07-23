@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Ente Auth Smart",
+    "version": "1.0",
+    "description": "Opens Ente Auth when 2FA is detected. REQUIRES ENTE AUTH SMART AND ENTE AUTH TO BE INSTALLED.",
+    "permissions": ["contextMenus", "scripting", "activeTab"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_title": "Ente Auth Smart"
+    },
+    "icons": {
+        "16": "ente-icon.png",
+        "48": "ente-icon.png",
+        "128": "ente-icon.png"
+    }
+}

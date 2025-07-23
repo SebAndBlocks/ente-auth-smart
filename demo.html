@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTP Autofill Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter One-Time Password (OTP)</h2>
+    <input
+      type="text"
+      inputmode="numeric"
+      pattern="\d{6}"
+      maxlength="6"
+      autocomplete="one-time-code"
+      name="otp"
+      id="otp"
+      placeholder="Enter 6-digit code"
+    />
+  </div>
+</body>
+</html>
