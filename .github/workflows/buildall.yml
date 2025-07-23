@@ -19,6 +19,7 @@ jobs:
           pip install flask
           pip install pillow
           pip install tk
+          pip install pystray
       - name: Build Windows .exe
         run: |
           pyinstaller --noconfirm --onefile --windowed --icon "entelock.ico" --name "Ente Auth Tray"  "ente-tray.py"
