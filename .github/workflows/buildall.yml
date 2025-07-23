@@ -22,8 +22,6 @@ jobs:
       - name: Build Windows .exe
         run: |
           pyinstaller --noconfirm --onefile --windowed --icon "entelock.ico" --name "Ente Auth Tray"  "ente-tray.py"
-          rmdir build
-          rm .'\Ente Auth Tray.spec'
       - name: Build Windows Installer
         uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
         with:
