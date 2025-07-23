@@ -2,3 +2,4 @@ build/*
 build/
 dist/
 dist/*
+ente_auth_ext.zip
