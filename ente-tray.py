@@ -74,8 +74,33 @@ ENTE_AUTH_CMD = [find_ente_auth_executable()]
 
 def launch_ente_auth():
     try:
-        subprocess.Popen(ENTE_AUTH_CMD)
+        proc = subprocess.Popen(ENTE_AUTH_CMD)
         print("Ente Auth launched.")
+
+        if sys.platform == "win32":
+            import time
+            import ctypes
+            time.sleep(0.5)  # Give time for window to appear
+
+            user32 = ctypes.WinDLL('user32', use_last_error=True)
+            FindWindow = user32.FindWindowW
+            SetForegroundWindow = user32.SetForegroundWindow
+            SetWindowPos = user32.SetWindowPos
+
+            HWND_TOPMOST = 50
+            SWP_NOMOVE = 0x0002
+            SWP_NOSIZE = 0x0001
+            SWP_SHOWWINDOW = 0x0040
+
+            hwnd = FindWindow(None, "Ente Auth")
+            if hwnd:
+                SetForegroundWindow(hwnd)
+                # Make window topmost
+                SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW)
+        elif sys.platform.startswith("linux"):
+            import time
+            time.sleep(0.5)
+            subprocess.call(['wmctrl', '-a', 'Ente Auth'])
     except Exception as e:
         print(f"Failed to launch Ente Auth: {e}")
 
