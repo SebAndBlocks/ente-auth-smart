@@ -18,7 +18,7 @@ jobs:
           pip install pywin32
           pip install flask
           pip install pillow
-          pip install tkinter
+          pip install tk
       - name: Build Windows .exe
         run: |
           pyinstaller --noconfirm --onefile --windowed --icon "entelock.ico" --name "Ente Auth Tray"  "ente-tray.py"
